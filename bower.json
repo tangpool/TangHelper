@@ -1,0 +1,17 @@
+{
+  "name": "TangHelper",
+  "version": "0.0.1",
+  "private": true,
+  "homepage": "https://github.com/tangpool/TangHelper",
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "angular": "~1.2.23"
+  }
+}
