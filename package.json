@@ -4,7 +4,7 @@
     "scripts": {
         "build-js": "browserify app/index.js -do build.js",
         "watch-js": "watchify app/index.js -dvo build.js",
-        "watch-less": "watch-less -d css -e .css",
+        "watch-less": "less-watch-compiler.js css css",
         "watch": "npm run watch-js & npm run watch-less & npm run bsync",
         "bsync": "browser-sync start --files 'css/**/*.css, build.js, index.html, partial/**/*.html, img/**/*' --server"
     }
