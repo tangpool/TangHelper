@@ -6,18 +6,147 @@
     <link rel="stylesheet" href="vendor/bootstrap/dist/css/bootstrap.min.css"/>
     <link rel="stylesheet" href="vendor/angular/angular-csp.css"/>
     <link rel="stylesheet" href="css/index.css"/>
-    <script src="vendor/angular/angular.min.js"></script>
-    <script src="vendor/angular-route/angular-route.min.js"></script>
+    <script src="vendor/angular/angular.js"></script>
+    <script src="vendor/angular-route/angular-route.js"></script>
     <script src="build.js"></script>
 </head>
 <body>
 
-<div class="container">
-    <div class="row">
-        <div class="col-xs-12">
-            <h1>hello world</h1>
-        </div>
+<div class="container body">
+
+    <div class="page-header">
+        <h1>TangHelper</h1>
     </div>
+
+    <form class="form-horizontal">
+
+        <div class="panel panel-default">
+            <div class="panel-heading">矿机类型</div>
+            <div class="panel-body">
+                <div class="form-group">
+                    <div class="col-sm-12">
+                        <div class="radio-inline">
+                            <label>
+                                <input type="radio" name="type" value="asic" checked>
+                                烤猫
+                            </label>
+                        </div>
+
+                        <div class="radio-inline">
+                            <label>
+                                <input type="radio" name="type" value="ant">
+                                蚂蚁
+                            </label>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="panel panel-default">
+            <div class="panel-heading">挖矿配置</div>
+            <div class="panel-body">
+                <div class="form-group">
+                    <label for="pool1.url" class="col-sm-2 control-label">矿池1:地址</label>
+                    <div class="col-sm-10">
+                        <input type="text" class="form-control" id="pool1.url" placeholder="请输入矿池地址...">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="pool1.port" class="col-sm-2 control-label">矿池1:端口</label>
+                    <div class="col-sm-10">
+                        <input type="text" class="form-control" id="pool1.port" placeholder="请输入矿池端口号...">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="pool2.url" class="col-sm-2 control-label">矿池2:地址</label>
+                    <div class="col-sm-10">
+                        <input type="text" class="form-control" id="pool2.url" placeholder="请输入矿池地址...">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="pool2.port" class="col-sm-2 control-label">矿池2:端口</label>
+                    <div class="col-sm-10">
+                        <input type="text" class="form-control" id="pool2.port" placeholder="请输入矿池端口号...">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="username" class="col-sm-2 control-label">用户名</label>
+                    <div class="col-sm-10">
+                        <input type="text" class="form-control" id="username" placeholder="请输入矿池注册的用户名...">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="prefix" class="col-sm-2 control-label">矿机前缀</label>
+                    <div class="col-sm-10">
+                        <input type="text" class="form-control" id="prefix" placeholder="请输入矿机前缀...">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="col-sm-offset-2 col-sm-10">
+                        <p>连接地址为：<code>us1.ghash.io:3333</code>。</p>
+                        <p>矿机命名为：<code>my.worker-XXXXXX</code>，其中 XXX 为 IP 地址后两段。</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="panel panel-default">
+            <div class="panel-heading">网络配置</div>
+            <div class="panel-body">
+                <div class="form-group">
+                    <label for="mask" class="col-sm-2 control-label">子网掩码 Mask</label>
+                    <div class="col-sm-10">
+                        <input type="text" class="form-control" id="mask" placeholder="请输入子网掩码...">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="gateway" class="col-sm-2 control-label">网关 Gateway</label>
+                    <div class="col-sm-10">
+                        <input type="text" class="form-control" id="gateway" placeholder="请输入网关地址...">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="dns1" class="col-sm-2 control-label">主DNS</label>
+                    <div class="col-sm-10">
+                        <input type="text" class="form-control" id="dns1" placeholder="请输入DNS...">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="dns2" class="col-sm-2 control-label">备用DNS</label>
+                    <div class="col-sm-10">
+                        <input type="text" class="form-control" id="dns2" placeholder="请输入DNS，可留空...">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="ip-start" class="col-sm-2 control-label">起始IP</label>
+                    <div class="col-sm-10">
+                        <input type="text" class="form-control" id="ip-start" placeholder="192.168.10.1">
+                        <span class="help-block">最近一次分配的 IP 是：192.168.10.1，仅供参考。</span>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="ip-end" class="col-sm-2 control-label">终止IP</label>
+                    <div class="col-sm-10">
+                        <input type="text" class="form-control" id="ip-end" placeholder="192.168.10.255">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-sm-2 control-label">当前IP</label>
+                    <div class="col-sm-10">
+                        <p class="form-control-static">email@example.com</p>
+                        <span class="help-block">请确认当前 IP 与要操作的矿机处于同一网段。这里显示的本机 IP 仅供参考。</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="col-sm-12">
+                <button type="submit" class="btn btn-primary btn-lg btn-block">开始</button>
+            </div>
+        </div>
+    </form>
 </div>
 
 </body>
