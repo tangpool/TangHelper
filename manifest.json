@@ -4,7 +4,8 @@
     "manifest_version": 2,
     "description": "TangHelper Awesome!",
     "permissions": [
-        "*://*/*"
+        "*://*/*",
+        "system.network"
     ],
     "app": {
         "background": {
