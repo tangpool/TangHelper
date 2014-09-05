@@ -12,7 +12,7 @@
 </head>
 <body>
 
-<div class="container body">
+<div class="container body" ng-controller="settings as vm">
 
     <div class="page-header">
         <h1>TangHelper</h1>
@@ -27,14 +27,14 @@
                     <div class="col-sm-12">
                         <div class="radio-inline">
                             <label>
-                                <input type="radio" name="type" value="asic" checked>
+                                <input type="radio" name="type" value="asic" ng-model="vm.config.type">
                                 烤猫
                             </label>
                         </div>
 
                         <div class="radio-inline">
                             <label>
-                                <input type="radio" name="type" value="ant">
+                                <input type="radio" name="type" value="ant" ng-model="vm.config.type">
                                 蚂蚁
                             </label>
                         </div>
@@ -49,43 +49,49 @@
                 <div class="form-group">
                     <label for="pool1.url" class="col-sm-2 control-label">矿池1:地址</label>
                     <div class="col-sm-10">
-                        <input type="text" class="form-control" id="pool1.url" placeholder="请输入矿池地址...">
+                        <input type="text" class="form-control" id="pool1.url" placeholder="请输入矿池地址..."
+                               ng-model="vm.config.pool1URL">
                     </div>
                 </div>
                 <div class="form-group">
                     <label for="pool1.port" class="col-sm-2 control-label">矿池1:端口</label>
                     <div class="col-sm-10">
-                        <input type="text" class="form-control" id="pool1.port" placeholder="请输入矿池端口号...">
+                        <input type="number" class="form-control" id="pool1.port" placeholder="请输入矿池端口号..."
+                                ng-model="vm.config.pool1Port">
                     </div>
                 </div>
                 <div class="form-group">
                     <label for="pool2.url" class="col-sm-2 control-label">矿池2:地址</label>
                     <div class="col-sm-10">
-                        <input type="text" class="form-control" id="pool2.url" placeholder="请输入矿池地址...">
+                        <input type="text" class="form-control" id="pool2.url" placeholder="请输入矿池地址..."
+                               ng-model="vm.config.pool2URL">
                     </div>
                 </div>
                 <div class="form-group">
                     <label for="pool2.port" class="col-sm-2 control-label">矿池2:端口</label>
                     <div class="col-sm-10">
-                        <input type="text" class="form-control" id="pool2.port" placeholder="请输入矿池端口号...">
+                        <input type="number" class="form-control" id="pool2.port" placeholder="请输入矿池端口号..."
+                               ng-model="vm.config.pool2Port">
                     </div>
                 </div>
                 <div class="form-group">
                     <label for="username" class="col-sm-2 control-label">用户名</label>
                     <div class="col-sm-10">
-                        <input type="text" class="form-control" id="username" placeholder="请输入矿池注册的用户名...">
+                        <input type="text" class="form-control" id="username" placeholder="请输入矿池注册的用户名..."
+                                ng-model="vm.config.username">
                     </div>
                 </div>
                 <div class="form-group">
                     <label for="prefix" class="col-sm-2 control-label">矿机前缀</label>
                     <div class="col-sm-10">
-                        <input type="text" class="form-control" id="prefix" placeholder="请输入矿机前缀...">
+                        <input type="text" class="form-control" id="prefix" placeholder="请输入矿机前缀，可留空..."
+                                ng-model="vm.config.prefix">
                     </div>
                 </div>
                 <div class="form-group">
                     <div class="col-sm-offset-2 col-sm-10">
-                        <p>连接地址为：<code>us1.ghash.io:3333</code>。</p>
-                        <p>矿机命名为：<code>my.worker-XXXXXX</code>，其中 XXX 为 IP 地址后两段。</p>
+                        <p>首选矿池连接地址为：<code>{{ vm.config.pool1URL }}:{{ vm.config.pool1Port }}</code>。</p>
+                        <p>矿机命名为：<code>{{ vm.config.username }}.{{ vm.config.prefix ? vm.config.prefix + '.' : '' }}XXXXXX</code>，其中 XXX 为 IP 地址后两段。</p>
                     </div>
                 </div>
             </div>
@@ -97,38 +103,38 @@
                 <div class="form-group">
                     <label for="mask" class="col-sm-2 control-label">子网掩码 Mask</label>
                     <div class="col-sm-10">
-                        <input type="text" class="form-control" id="mask" placeholder="请输入子网掩码...">
+                        <input type="text" class="form-control" id="mask" placeholder="请输入子网掩码..." ng-model="vm.config.mask">
                     </div>
                 </div>
                 <div class="form-group">
                     <label for="gateway" class="col-sm-2 control-label">网关 Gateway</label>
                     <div class="col-sm-10">
-                        <input type="text" class="form-control" id="gateway" placeholder="请输入网关地址...">
+                        <input type="text" class="form-control" id="gateway" placeholder="请输入网关地址..." ng-model="vm.config.gateway">
                     </div>
                 </div>
                 <div class="form-group">
                     <label for="dns1" class="col-sm-2 control-label">主DNS</label>
                     <div class="col-sm-10">
-                        <input type="text" class="form-control" id="dns1" placeholder="请输入DNS...">
+                        <input type="text" class="form-control" id="dns1" placeholder="请输入DNS..." ng-model="vm.config.dns1">
                     </div>
                 </div>
                 <div class="form-group">
                     <label for="dns2" class="col-sm-2 control-label">备用DNS</label>
                     <div class="col-sm-10">
-                        <input type="text" class="form-control" id="dns2" placeholder="请输入DNS，可留空...">
+                        <input type="text" class="form-control" id="dns2" placeholder="请输入DNS，可留空..." ng-model="vm.config.dns2">
                     </div>
                 </div>
                 <div class="form-group">
                     <label for="ip-start" class="col-sm-2 control-label">起始IP</label>
                     <div class="col-sm-10">
-                        <input type="text" class="form-control" id="ip-start" placeholder="192.168.10.1">
+                        <input type="text" class="form-control" id="ip-start" placeholder="请输入起始IP..." ng-model="vm.config.ipStart">
                         <span class="help-block">最近一次分配的 IP 是：192.168.10.1，仅供参考。</span>
                     </div>
                 </div>
                 <div class="form-group">
                     <label for="ip-end" class="col-sm-2 control-label">终止IP</label>
                     <div class="col-sm-10">
-                        <input type="text" class="form-control" id="ip-end" placeholder="192.168.10.255">
+                        <input type="text" class="form-control" id="ip-end" placeholder="请输入终止IP..." ng-model="vm.config.ipEnd">
                     </div>
                 </div>
                 <div class="form-group">
