@@ -5,7 +5,7 @@
         "build-js": "browserify app/index.js -do build.js",
         "watch-js": "watchify app/index.js -dvo build.js",
         "build-less": "lessc --source-map-map-inline -x css/index.less > css/index.css",
-        "watch-less": "less-watch-compiler.js css/index.less css/index.css",
+        "watch-less": "less-watch-compiler.js css css",
         "build": "npm run build-js & npm run build-less",
         "bsync": "browser-sync start --files 'css/**/*.css, build.js, index.html, partial/**/*.html, img/**/*' --server",
         "watch": "npm run watch-js & npm run watch-less & npm run bsync",

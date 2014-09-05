@@ -5,7 +5,8 @@
     "description": "TangHelper Awesome!",
     "permissions": [
         "*://*/*",
-        "system.network"
+        "system.network",
+        "storage"
     ],
     "app": {
         "background": {
