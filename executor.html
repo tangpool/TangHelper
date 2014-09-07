@@ -14,8 +14,17 @@
 <body>
 
 <div class="container body" ng-controller="executorCtrl as vm">
-    <div class="page-header ng-cloak">
+
+    <div class="page-header">
         <h1>TangHelper - 执行中</h1>
+    </div>
+
+    <pre><code>{{ vm.conf|json }}</code></pre>
+
+    <div class="executor-indicator">
+        <h2 class="status">
+            {{ vm.activeStatus|translate }}...
+        </h2>
     </div>
 </div>
 
