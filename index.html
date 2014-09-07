@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html ng-app="tangHelper" ng-csp style="overflow-y: scroll;">
+<html ng-app="tangHelper.settings" ng-csp>
 <head lang="zh">
     <meta charset="UTF-8">
     <title>TangHelper - Configuring</title>
@@ -12,10 +12,10 @@
 </head>
 <body>
 
-<div class="container body" ng-controller="settings as vm">
+<div class="container body" ng-controller="settingsCtrl as vm">
 
     <div class="page-header">
-        <h1>TangHelper</h1>
+        <h1>TangHelper - 设置</h1>
     </div>
 
     <form class="form-horizontal" ng-submit="vm.goToExecutor()">

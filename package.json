@@ -2,8 +2,8 @@
   "name": "TangHelper",
   "version": "0.0.1",
   "scripts": {
-    "build-js": "npm run jshint -s && (browserify app/index.js -do settings.build.js & browserify app/executor.js -do executor.build.js & browserify -r app/service/asic -r app/service/ant -do plugins.build.js)",
-    "watch-js": "watchify app/index.js -dvo settings.build.js & watchify app/executor.js -dvo executor.build.js & watchify -r app/service/asic -r app/service/ant -dvo plugins.build.js",
+    "build-js": "npm run jshint -s && (browserify app/settings.js -do settings.build.js & browserify app/executor.js -do executor.build.js & browserify -r app/service/asic -r app/service/ant -do plugins.build.js)",
+    "watch-js": "watchify app/settings.js -dvo settings.build.js & watchify app/executor.js -dvo executor.build.js & watchify -r app/service/asic -r app/service/ant -dvo plugins.build.js",
     "jshint": "find node_modules/app -name '*.js' | xargs jshint --verbose",
 
     "build-less": "lessc --source-map-map-inline -x css/index.less > css/index.css",
