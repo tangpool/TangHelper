@@ -1,10 +1,32 @@
 <!DOCTYPE html>
-<html>
+<html ng-csp>
 <head lang="zh">
     <meta charset="UTF-8">
-    <title></title>
+    <title>TangHelper - Working</title>
+    <link rel="stylesheet" href="vendor/bootstrap/dist/css/bootstrap.min.css"/>
+    <link rel="stylesheet" href="vendor/angular/angular-csp.css"/>
+    <link rel="stylesheet" href="css/index.css"/>
+    <script src="vendor/angular/angular.js"></script>
+    <script src="vendor/angular-route/angular-route.js"></script>
+    <script src="plugins.build.js"></script>
+    <script src="executor.build.js"></script>
 </head>
 <body>
+
+<div class="container body" ng-controller="executorCtrl as vm">
+
+    <div class="page-header">
+        <h1>TangHelper - 执行中</h1>
+    </div>
+
+    <!--<pre><code>{{ vm.conf|json }}</code></pre>-->
+
+    <div class="executor-indicator">
+        <h2 class="status">
+            {{ vm.activeStatus|translate }}...
+        </h2>
+    </div>
+</div>
 
 </body>
 </html>

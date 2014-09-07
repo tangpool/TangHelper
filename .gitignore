@@ -18,8 +18,7 @@ Session.vim
 /node_modules/*
 !/node_modules/app/
 
-background.build.js
-build.js
+*.build.js
 css/**/*.css
 
 npm-debug.log

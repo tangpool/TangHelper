@@ -1,30 +1,37 @@
 <!DOCTYPE html>
-<html ng-app="tangHelper" ng-csp>
+<html ng-app="tangHelper.settings" ng-csp>
 <head lang="zh">
     <meta charset="UTF-8">
-    <title></title>
+    <title>TangHelper - Configuring</title>
     <link rel="stylesheet" href="vendor/bootstrap/dist/css/bootstrap.min.css"/>
     <link rel="stylesheet" href="vendor/angular/angular-csp.css"/>
     <link rel="stylesheet" href="css/index.css"/>
     <script src="vendor/angular/angular.js"></script>
     <script src="vendor/angular-route/angular-route.js"></script>
-    <script src="build.js"></script>
+    <script src="settings.build.js"></script>
 </head>
 <body>
 
-<div class="container body" ng-controller="settings as vm">
+<div class="container body" ng-controller="settingsCtrl as vm">
 
     <div class="page-header">
-        <h1>TangHelper</h1>
+        <h1>TangHelper - 设置</h1>
     </div>
 
-    <form class="form-horizontal">
+    <form class="form-horizontal" ng-submit="vm.goToExecutor()">
 
         <div class="panel panel-default">
             <div class="panel-heading">矿机类型</div>
             <div class="panel-body">
                 <div class="form-group">
                     <div class="col-sm-12">
+                        <div class="radio-inline">
+                            <label>
+                                <input type="radio" name="type" value="mock" ng-model="vm.config.type">
+                                mock
+                            </label>
+                        </div>
+
                         <div class="radio-inline">
                             <label>
                                 <input type="radio" name="type" value="asic" ng-model="vm.config.type">
@@ -138,9 +145,15 @@
                     </div>
                 </div>
                 <div class="form-group">
+                    <label for="miner-ip" class="col-sm-2 control-label">矿机默认IP和端口</label>
+                    <div class="col-sm-10">
+                        <input type="text" class="form-control" id="miner-ip" placeholder="请输入矿机默认IP:PORT..." ng-model="vm.config.minerDefaultAddress">
+                    </div>
+                </div>
+                <div class="form-group">
                     <label class="col-sm-2 control-label">当前IP</label>
                     <div class="col-sm-10">
-                        <p class="form-control-static">email@example.com</p>
+                        <p class="form-control-static" ng-repeat="ip in vm.ips">{{ ip.name }}: {{ ip.address }}</p>
                         <span class="help-block">请确认当前 IP 与要操作的矿机处于同一网段。这里显示的本机 IP 仅供参考。</span>
                     </div>
                 </div>
