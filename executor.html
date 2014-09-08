@@ -19,12 +19,18 @@
         <h1>TangHelper - 执行中</h1>
     </div>
 
-    <!--<pre><code>{{ vm.conf|json }}</code></pre>-->
-
     <div class="executor-indicator">
         <h2 class="status">
             {{ vm.activeStatus|translate }}...
         </h2>
+        <div class="status-detail">
+            <p>第 <b>{{ vm.statusDetail.count }}</b> 次分配...</p>
+            <p>当前待分配的 IP 是：<code>{{ vm.statusDetail.nextIP }}</code></p>
+            <hr/>
+            <p>配置信息：
+                <pre><code>{{ vm.conf|json }}</code></pre>
+            </p>
+        </div>
     </div>
 </div>
 
