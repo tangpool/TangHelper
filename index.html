@@ -27,21 +27,24 @@
                     <div class="col-sm-12">
                         <div class="radio-inline">
                             <label>
-                                <input type="radio" name="type" value="mock" ng-model="vm.config.type">
+                                <input type="radio" name="type" value="mock"
+                                       ng-model="vm.config.type" ng-click="vm.selectType('mock')">
                                 mock
                             </label>
                         </div>
 
                         <div class="radio-inline">
                             <label>
-                                <input type="radio" name="type" value="asic" ng-model="vm.config.type">
+                                <input type="radio" name="type" value="asic"
+                                       ng-model="vm.config.type"  ng-click="vm.selectType('asic')">
                                 烤猫
                             </label>
                         </div>
 
                         <div class="radio-inline">
                             <label>
-                                <input type="radio" name="type" value="ant" ng-model="vm.config.type">
+                                <input type="radio" name="type" value="ant"
+                                       ng-model="vm.config.type" ng-click="vm.selectType('ant')">
                                 蚂蚁
                             </label>
                         </div>
