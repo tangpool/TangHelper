@@ -29,11 +29,27 @@
 
 该工具基于 Chrome 开发，做为 Chrome App 出现，因此可以在 Windows/Linux/MacOS 上运行。
 
-### 安装方法
+### 安装
 
+1. [安装 Google Chrome 浏览器](http://www.baidu.com/s?ie=UTF-8&wd=google%20chrome)；
+1. [下载程序文件](http://)，并解压缩；
+2. 打开 Chrome 浏览器，点击右上角 设置 - 工具 - 扩展，点击“开发者模式”，点击“载入开发中的扩展”，然后选择第 2 步中解压的**文件夹**；
+2. 此时 TangHelper 应已显示在扩展列表中。
 
+### 使用
 
-## 本地开发
+1. 打开 TangHelper后，进入设置页面。
+1. 按照页面提示设置矿机信息。
+2. 设置完成后，点击开始按钮，进入执行页面。
+3. 执行页面共分为以下几个状态：
 
+   1. 等待连接
+   2. 操作中
+   3. 等待断开
+   
+   正常工作状态下会按顺序显示。
+   
+## 技术支持
 
-
++ 在 [issues](https://github.com/tangpool/TangHelper/issues) 页面提出问题，或者
++ 发邮件到 techsupport@tangpool.com ，请注明问题类型为 TangHelper。
