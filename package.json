@@ -1,0 +1,26 @@
+{
+  "name": "TangHelper",
+  "version": "0.0.1",
+  "scripts": {
+    "build-js": "npm run jshint -s && (browserify app/settings.js -do settings.build.js && browserify app/executor.js -do executor.build.js && browserify -r app/service/asic -r app/service/ant -r app/service/mock -r app/service/avalon -do plugins.build.js)",
+    "watch-js": "watchify app/settings.js -dvo settings.build.js & watchify app/executor.js -dvo executor.build.js & watchify -r app/service/asic -r app/service/ant -r app/service/mock -r app/service/avalon -dvo plugins.build.js",
+    "jshint": "find node_modules/app -name '*.js' | xargs jshint --verbose",
+    "build-less": "lessc --source-map-map-inline -x css/index.less > css/index.css",
+    "watch-less": "less-watch-compiler.js css css",
+    "bsync": "browser-sync start --files 'css/**/*.css, build.js, index.html, partial/**/*.html, img/**/*' --server",
+    "watch": "npm run watch-js & npm run watch-less",
+    "build": "npm run build-js && npm run build-less",
+    "clean": "rm -rf *.build.js css/*.css npm-debug.log",
+    "release": "npm run clean && npm run build && zip -9 -FS -r release/release.zip . -x 'release/*' -x './.git/*' -x './.idea/*' -y"
+  },
+  "dependencies": {
+    "async": "~0.9.0",
+    "jquery": "^2.1.1",
+    "lodash": "~2.4.1",
+    "sprintf": "^0.1.4"
+  },
+  "devDependencies": {
+    "browserify": "~5.11.1",
+    "browserify-shim": "~3.7.0"
+  }
+}

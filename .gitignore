@@ -13,3 +13,12 @@ Session.vim
 *~
 
 .DS_Store
+
+/vendor/
+/node_modules/*
+!/node_modules/app/
+
+*.build.js
+css/**/*.css
+
+npm-debug.log

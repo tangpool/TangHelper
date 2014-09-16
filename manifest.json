@@ -1,0 +1,22 @@
+{
+    "name": "TangHelper",
+    "version": "0.0.1",
+    "manifest_version": 2,
+    "description": "TangHelper Awesome!",
+    "permissions": [
+        "*://*/*",
+        "system.network",
+        "storage"
+    ],
+    "app": {
+        "background": {
+            "scripts": [
+                "background.js"
+            ]
+        }
+    },
+    "icons": {
+        "16": "img/icon.gif",
+        "128": "img/icon.gif"
+    }
+}
