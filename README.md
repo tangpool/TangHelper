@@ -32,7 +32,7 @@
 ### 安装
 
 1. [安装 Google Chrome 浏览器](http://www.baidu.com/s?ie=UTF-8&wd=google%20chrome)；
-1. [下载程序文件](http://)，并解压缩；
+1. [下载程序文件](https://raw.githubusercontent.com/tangpool/TangHelper/master/release/release.zip)，并解压缩；
 2. 打开 Chrome 浏览器，点击右上角 设置 - 工具 - 扩展，点击“开发者模式”，点击“载入开发中的扩展”，然后选择第 2 步中解压的**文件夹**；
 2. 此时 TangHelper 应已显示在扩展列表中。
 
@@ -42,7 +42,6 @@
 1. 按照页面提示设置矿机信息。
 2. 设置完成后，点击开始按钮，进入执行页面。
 3. 执行页面共分为以下几个状态：
-
    1. 等待连接
    2. 操作中
    3. 等待断开
