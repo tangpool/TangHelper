@@ -5,7 +5,7 @@ DEFAULT_MAX_CONCURRENT=100
 
 usage() {
     echo "
-Usage: `basename $0` [OPTIONS] ip_range_start ip_range_end pool1url pool1user pool2url pool2user
+Usage: `basename $0` [OPTIONS] ip_range_start ip_range_end pool1url pool2url
 
 批量修改矿池设置
 
@@ -20,12 +20,8 @@ ARGUMENTS
         终止 IP 地址
     pool1url=str
         矿池 1 的 URL，无需填写 'stratum+tcp://' 前缀
-    pool1user=str
-        矿池 1 的 用户名
     pool2url=str
         矿池 2 的 URL，无需填写 'stratum+tcp://' 前缀
-    pool2user=str
-        矿池 2 的 用户名
 "
     exit
 }
@@ -52,7 +48,7 @@ main() {
     local ip="$ip_range_start"
     local pids=()
     while true; do
-        /bin/bash ./process.sh "$ip" "$pool1url" "$pool1user" "$pool2url" "$pool2user" &
+        /bin/bash "$cwd"/process.sh "$ip" "$pool1url" "$pool2url" >miner."$ip".log 2>&1 &
 
         # 排队
         if [[ "$max_concurrent" -ne 0 ]]; then
@@ -82,6 +78,21 @@ main() {
         (( ip_int += 1))
         ip=`int_to_ip "$ip_int"`
     done
+
+    while true; do
+        for pid in "${!pids[@]}"; do
+            if ! kill -0 "$pid" 2>/dev/null; then # done
+                unset pids[$pid]
+            fi
+        done
+        if [[ ${#pids[@]} -eq 0 ]]; then
+            break;
+        fi
+        echo "waiting for ${#pids[@]} to be done..."
+        sleep 1
+    done
+
+    echo "done"
 
     exit 0
 }
@@ -118,7 +129,7 @@ while true; do
 shift
 done
 
-[[ $# -ne 6 ]] && usage;
+[[ $# -ne 4 ]] && usage;
 if [[ -z "$max_concurrent" ]]; then
     max_concurrent="$DEFAULT_MAX_CONCURRENT"
 fi
@@ -126,8 +137,6 @@ fi
 ip_range_start="$1"
 ip_range_end="$2"
 pool1url=stratum+tcp://"$3"
-pool1user="$4"
-pool2url=stratum+tcp://"$5"
-pool2user="$6"
+pool2url=stratum+tcp://"$4"
 
 main
