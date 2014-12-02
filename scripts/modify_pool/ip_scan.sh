@@ -48,7 +48,7 @@ main() {
     local ip="$ip_range_start"
     local pids=()
     while true; do
-        /bin/bash "$process_file" "$ip" $* >miner."$ip"."$process_file".log 2>&1 &
+        /bin/bash "$process_file" "$ip" $* >miner."$ip".log 2>&1 &
 
         # 排队
         if [[ "$max_concurrent" -ne 0 ]]; then
@@ -104,10 +104,6 @@ sudo apt-get install -y sshpass" >&2
 fi
 
 cwd=$(cd "$(dirname "$0")"; pwd)
-if [[ ! -f "$cwd"/process.sh ]]; then
-    echo "目录 $cwd 下找不到 process.sh" >&2
-    exit 2
-fi
 
 ARGS=`getopt -o m: -l max: -- "$@"`
 [ $? -ne 0 ] && usage
