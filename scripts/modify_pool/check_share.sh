@@ -10,7 +10,7 @@ sshpass -p root \
         -o ConnectTimeout=30 \
     root@"$ip" "
 threshold=$threshold;
-share=`cgminer-api | sed -n 's| \+\[GHS av\] => \([[:digit:]]\+\).\+|\1|gp'`;
+share=\`/usr/bin/cgminer-api | sed -n 's| \+\[GHS av\] => \([[:digit:]]\+\).\+|\1|gp'\`;
 if [[ \"\$share\" -lt \"\$threshold\" ]]; then
     echo lower than expected \"\$threshold\", restarting... >&2 ;
     /etc/init.d/cgminer restart ;
