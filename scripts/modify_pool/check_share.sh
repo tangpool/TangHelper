@@ -13,6 +13,8 @@ threshold=$threshold;
 share=\`/usr/bin/cgminer-api | sed -n 's| \+\[GHS av\] => \([[:digit:]]\+\).\+|\1|gp'\`;
 if [[ \"\$share\" -lt \"\$threshold\" ]]; then
     echo lower than expected \"\$threshold\", restarting... >&2 ;
+    killall -s 9 cgminer ;
+    sleep 1 ;
     /etc/init.d/cgminer restart ;
 fi
 "
