@@ -5,7 +5,7 @@ DEFAULT_MAX_CONCURRENT=100
 
 usage() {
     echo "
-Usage: `basename $0` [OPTIONS] ip_range_start ip_range_end pool1url pool2url
+Usage: `basename $0` [OPTIONS] file ip_range_start ip_range_end args...
 
 批量修改矿池设置
 
@@ -14,14 +14,14 @@ OPTIONS
         最大同时执行数，设为 0 则不限制
 
 ARGUMENTS
+    file
+        要执行的文件路径，需要为 shell 文件
     ip_range_start=str
         起始 IP 地址
     ip_range_end=str
         终止 IP 地址
-    pool1url=str
-        矿池 1 的 URL，无需填写 'stratum+tcp://' 前缀
-    pool2url=str
-        矿池 2 的 URL，无需填写 'stratum+tcp://' 前缀
+    args...
+        传给 process.sh 参数列表
 "
     exit
 }
@@ -48,7 +48,7 @@ main() {
     local ip="$ip_range_start"
     local pids=()
     while true; do
-        /bin/bash "$cwd"/process.sh "$ip" "$pool1url" "$pool2url" >miner."$ip".log 2>&1 &
+        /bin/bash "$process_file" "$ip" $* >miner."$ip"."$process_file".log 2>&1 &
 
         # 排队
         if [[ "$max_concurrent" -ne 0 ]]; then
@@ -129,14 +129,15 @@ while true; do
 shift
 done
 
-[[ $# -ne 4 ]] && usage;
+[[ $# -lt 3 ]] && usage;
 if [[ -z "$max_concurrent" ]]; then
     max_concurrent="$DEFAULT_MAX_CONCURRENT"
 fi
 
-ip_range_start="$1"
-ip_range_end="$2"
-pool1url=stratum+tcp://"$3"
-pool2url=stratum+tcp://"$4"
+process_file="$1"; shift
+process_file=`readlink -e "$process_file"`
 
-main
+ip_range_start="$1"; shift
+ip_range_end="$1"; shift
+
+main $*
